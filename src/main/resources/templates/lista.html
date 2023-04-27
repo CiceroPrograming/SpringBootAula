@@ -22,7 +22,7 @@
                <td data-th-text="${aluno.id}"></td>
                <td data-th-text="${aluno.nome}"></td>
                <td data-th-text="${aluno.usuario}"></td>
-               <td><a type="submit" href="'/excluir/'+${aluno.id}">Cadastrar</a></td>
+               <td><a th:href="@{'/excluir/'+${aluno.id}}">Delete</a></td>
             </tr>
         </tbody>
 

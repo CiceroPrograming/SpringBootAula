@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,9 +36,18 @@ public class AlunoController {
         return mv;
     }
 
-    @PostMapping("/excluir")
-    public String excluir(int id) {
+    @GetMapping("/excluir/{id}")
+    public ModelAndView excluir(@PathVariable("id") int id) {
+        ModelAndView mv = new ModelAndView("lista");
+        for (Aluno a1 : alunos) {
+            if (a1.getId() == id) {
+                alunos.remove(a1);
+                break;
+            }
+        }
 
+        mv.addObject("Alunos", alunos);
+        return mv;
     }
 
 }
